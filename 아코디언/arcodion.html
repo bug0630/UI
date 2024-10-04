@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <title>Document</title>
+    <style>
+      .arcodion li {
+        display: flex;
+        flex-direction: column;
+      }
+      h5 {
+        display: flex;
+        justify-content: space-between;
+      }
+      .depth {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden;
+        height: 0;
+        gap: 5px;
+      }
+      .depth a {
+        color: rgb(97, 97, 97);
+        width: 100%;
+      }
+      .depth li {
+        display: flex;
+        padding: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="arcodion">
+      <li>
+        <h5>arcodion1<span class="material-symbols-outlined"> add </span></h5>
+        <ul class="depth">
+          <li><a href="#">list1</a></li>
+          <li><a href="#">list2</a></li>
+          <li><a href="#">list3</a></li>
+        </ul>
+      </li>
+      <li>
+        <h5>arcodion2<span class="material-symbols-outlined"> add </span></h5>
+        <ul class="depth">
+          <li><a href="#">list1</a></li>
+          <li><a href="#">list2</a></li>
+          <li><a href="#">list3</a></li>
+          <li><a href="#">list4</a></li>
+        </ul>
+      </li>
+      <li>
+        <h5>arcodion3<span class="material-symbols-outlined"> add </span></h5>
+        <ul class="depth">
+          <li><a href="#">list1</a></li>
+          <li><a href="#">list2</a></li>
+          <li><a href="#">list3</a></li>
+          <li><a href="#">list4</a></li>
+        </ul>
+      </li>
+      <li>
+        <h5>arcodion4<span class="material-symbols-outlined"> add </span></h5>
+        <ul class="depth">
+          <li><a href="#">list1</a></li>
+          <li><a href="#">list2</a></li>
+        </ul>
+      </li>
+      <li>
+        <h5>arcodion5<span class="material-symbols-outlined"> add </span></h5>
+        <ul class="depth">
+          <li><a href="#">list1</a></li>
+          <li><a href="#">list2</a></li>
+          <li><a href="#">list3</a></li>
+          <li><a href="#">list4</a></li>
+          <li><a href="#">list5</a></li>
+        </ul>
+      </li>
+    </ul>
+  </body>
+  <script>
+    document.querySelectorAll(".arcodion h5").forEach(function (element) {
+      element.removeEventListener("click", handleClick);
+      element.addEventListener("click", handleClick);
+    });
+
+    function handleClick(event) {
+      let $lnb = event.currentTarget.nextElementSibling;
+      let $arrow = event.currentTarget.querySelector(
+        ".material-symbols-outlined"
+      );
+
+      if ($lnb.offsetHeight === 0) {
+        $lnb.style.height = "auto";
+        let autoHeight = $lnb.offsetHeight;
+        $lnb.style.height = "0";
+        setTimeout(() => {
+          $lnb.style.transition = "height 0.3s";
+          $lnb.style.height = autoHeight + "px";
+        }, 0);
+        $arrow.style.transform = "rotate(45deg)";
+        $arrow.style.transition = "transform 0.3s";
+      } else {
+        $lnb.style.transition = "height 0.3s";
+        $lnb.style.height = "0";
+        $arrow.style.transform = "rotate(90deg)";
+        $arrow.style.transition = "transform 0.3s";
+      }
+    }
+  </script>
+</html>
